@@ -15,7 +15,7 @@ Guidance for coding agents working in this repo — the standalone repo of the *
 No cargo in *this* repo, but the examples pull para/db, whose native driver the composed toolchain cargo-builds — so running them needs both the `noeta` binary and a Rust toolchain on `PATH`.
 
 - `noeta check <file>.noe` / `noeta test <file>.noe` in each `examples/*` directory is the test suite.
-- The composed toolchain must resolve the same toolchain repo the native crates' Cargo.toml declares. Pre-publish that means `NOETA_TOOLCHAIN_REPO=file:///home/niklas/Code/lang` (a mismatch links two copies of the extension ABI — every impl fails with a two-`Extension`-traits E0308); optionally `NOETA_TOOLCHAIN_SRC=<path to a noeta checkout>` to skip the git fetch.
+- The composed toolchain must resolve the same toolchain repo the native crates' Cargo.toml declares (`https://github.com/noeta-lang/noeta`) — the default patch key (the binary's baked repository URL) now matches, so no env var is needed. When overriding to a fork or local clone, `NOETA_TOOLCHAIN_REPO` must equal the declared URL (a mismatch links two copies of the extension ABI — a two-`Extension`-traits E0308); optionally `NOETA_TOOLCHAIN_SRC=<path to a noeta checkout>` to skip the git fetch.
 
 ## Conventions
 
