@@ -20,8 +20,11 @@ No cargo in *this* repo, but the examples pull para/db, whose native driver the 
 ## Conventions
 
 - `noeta.lock` files under `examples/` **are committed** — leave resolved locks in place; don't delete or regenerate them gratuitously.
-- Markdown never hard-wraps lines; American English throughout.
-- Conventional commits. Never move a published `v*` tag — a release is a new tag.
+- Markdown never hard-wraps lines.
+- **American English** throughout — code, comments, and docs (`behavior`, not `behaviour`).
+- **Conventional commits** for all commit titles. Commit each green slice as it completes, but **never `git push` without explicit authorization**. Never move a published `v*` tag — a release is a new tag.
+- Implement in full — no stubs or TODOs; new functionality lands with tests.
+- Keep `README.md` and this file up to date when layout or behavior changes.
 
 ## CI
 
