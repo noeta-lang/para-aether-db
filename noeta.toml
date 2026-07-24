@@ -1,0 +1,21 @@
+[package]
+name = "para/aether_db"
+version = "0.1.0"
+
+# The DB-backed session store for para/aether — the stored, revocable upgrade to std.session's
+# stateless `CookieSessions`. It is a PURE-Noeta package (no native half of its own): it composes the
+# `SessionStore` trait + `Session` currency from para/aether with the native `Connection` from
+# para/db.
+#
+# It therefore depends on TWO sibling packages of the same `para` scope, bound under one `para` scope
+# key as an array — the multi-package-per-scope resolution (`Dependency::Scope`) an app uses, here on
+# a PACKAGE. This is why the store lives in its own companion package rather than in either dependency:
+# a database package must not depend on the web framework, and folding it into aether-core would make
+# para/db's native SQLite/Postgres footprint mandatory for every aether app. An app opts in to stored
+# sessions by adding `para/aether-db` to the `para` scope it already lists aether (and para/db) under.
+[dependencies]
+# file:// is the pre-publish form; flips to the hosted registry / github URLs at publish.
+para = [
+    { git = "file:///home/niklas/Code/para/para-aether", tag = "v0.1.0" },
+    { git = "file:///home/niklas/Code/para/para-db", tag = "v0.1.0" },
+]
