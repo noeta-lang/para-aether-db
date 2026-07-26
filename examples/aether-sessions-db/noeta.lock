@@ -17,7 +17,7 @@ version = "0.1.0"
 source = "path"
 path = "../.."
 edition = "2026"
-hash = "996d289f254737e4b07a411f0f330d06f0e41391034192090ff4136c54226aa8"
+hash = "ccaae89d0c90efc6c56228b4c5e04a99c0b9054007eef748ad16d854a8aec101"
 
 [[package]]
 name = "para/db"
