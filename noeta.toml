@@ -1,8 +1,10 @@
 [package]
 name = "para/aether_db"
-version = "0.1.0"
+version = "0.1.1"
 # The minimum noeta this package works with; enforced at resolve time from noeta 0.2.1 on.
 toolchain = ">=0.2"
+description = "Database-backed sessions for aether — the stored, revocable upgrade to cookie sessions."
+keywords = ["sessions", "web", "database", "aether"]
 
 # The DB-backed session store for para/aether — the stored, revocable upgrade to std.session's
 # stateless `CookieSessions`. It is a PURE-Noeta package (no native half of its own): it composes the

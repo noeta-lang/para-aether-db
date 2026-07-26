@@ -13,24 +13,24 @@ hash = "2e3dc472edbe3ab346c47cc72590267779725eb18b2ebefd8eacb57094bb8066"
 
 [[package]]
 name = "para/aether_db"
-version = "0.1.0"
+version = "0.1.1"
 source = "path"
 path = "../.."
 edition = "2026"
-hash = "ccaae89d0c90efc6c56228b4c5e04a99c0b9054007eef748ad16d854a8aec101"
+hash = "6e51811d6a7a4d29e54c6bcf9da03d0eb66684351e1f71f6421d0c4830509516"
 
 [[package]]
 name = "para/db"
-version = "0.1.0"
+version = "0.1.1"
 source = "git"
 url = "https://github.com/noeta-lang/para-db"
-tag = "v0.1.0"
-sha = "911b572c5af1a93f0fd01d9014267afbfbe9ae6e"
+tag = "v0.1.1"
+sha = "be0c32dc9ce0cd449de0123ee3d397c0f8eae1fb"
 native = "native"
 edition = "2026"
-hash = "b5a60da7f23a155ef99fa26ff622bf4fbe3f199dbd4b463ce69dd1531cfce03a"
+hash = "6eec6316c83dcb8bbcab6254394a0c56144fc6616477cbda0a57423aa729cceb"
 
 [[scope]]
 name = "para"
 issuer = "https://token.actions.githubusercontent.com"
-identity = "https://github.com/noeta-lang/para-db/.github/workflows/release.yml@refs/tags/v0.1.0"
+identity = "https://github.com/noeta-lang/para-db/.github/workflows/release.yml@refs/tags/v0.1.1"
