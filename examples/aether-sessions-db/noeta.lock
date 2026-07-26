@@ -13,11 +13,11 @@ hash = "2e3dc472edbe3ab346c47cc72590267779725eb18b2ebefd8eacb57094bb8066"
 
 [[package]]
 name = "para/aether_db"
-version = "0.1.1"
+version = "0.1.2"
 source = "path"
 path = "../.."
 edition = "2026"
-hash = "6e51811d6a7a4d29e54c6bcf9da03d0eb66684351e1f71f6421d0c4830509516"
+hash = "7de64de624613c60e10e9511fefaa6eae71f690b9742d68332ba597946f9ed37"
 
 [[package]]
 name = "para/db"
