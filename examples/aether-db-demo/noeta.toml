@@ -6,10 +6,9 @@ version = "0.1.0"
 # single SCOPE dependency. Two packages of the same scope (`para/aether` + `para/db`) bind under one
 # `para` key as an array; this is the multi-package-per-scope resolution (was the F7 blocker for DB3).
 [dependencies]
-# file:// is the pre-publish form; flips to the hosted registry / github URLs at publish.
 para = [
-    { git = "file:///home/niklas/Code/para/para-aether", tag = "v0.1.0" },
-    { git = "file:///home/niklas/Code/para/para-db", tag = "v0.1.0" },
+    { version = "^0.1", package = "para/aether" },
+    { version = "^0.1", package = "para/db" },
 ]
 
 # `para/db` ships a native Rust extension (the SQLite driver); the root app must authorize it.

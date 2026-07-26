@@ -8,10 +8,9 @@ version = "0.1.0"
 # WITHOUT this dependency would get an ordinary unresolved-import error — that error plus the
 # package's docs are the discoverability story; there is no bespoke compiler diagnostic.
 [dependencies]
-# file:// is the pre-publish form; flips to the hosted registry / github URLs at publish.
 para = [
-    { git = "file:///home/niklas/Code/para/para-aether", tag = "v0.1.0" },
-    { git = "file:///home/niklas/Code/para/para-db", tag = "v0.1.0" },
+    { version = "^0.1", package = "para/aether" },
+    { version = "^0.1", package = "para/db" },
     { path = "../.." },
 ]
 

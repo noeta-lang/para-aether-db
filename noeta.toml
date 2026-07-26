@@ -14,8 +14,7 @@ version = "0.1.0"
 # para/db's native SQLite/Postgres footprint mandatory for every aether app. An app opts in to stored
 # sessions by adding `para/aether-db` to the `para` scope it already lists aether (and para/db) under.
 [dependencies]
-# file:// is the pre-publish form; flips to the hosted registry / github URLs at publish.
 para = [
-    { git = "file:///home/niklas/Code/para/para-aether", tag = "v0.1.0" },
-    { git = "file:///home/niklas/Code/para/para-db", tag = "v0.1.0" },
+    { version = "^0.1", package = "para/aether" },
+    { version = "^0.1", package = "para/db" },
 ]
