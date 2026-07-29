@@ -35,15 +35,20 @@ struct CreateUser {
     age: int
 }
 
-// The app's data store: a `para.db` repository over the `users` table, adapting the native SQLite
-// driver to aether's database-agnostic `Store` interface. This is the ONE place the framework and the
-// database meet — everything above it is driver-agnostic.
+// The app's data store: a `para.db` repository over the `users` table — `Repository<User>`, the model
+// as its type argument — adapting the native SQLite driver to aether's database-agnostic `Store`
+// interface. This is the ONE place the framework and the database meet — everything above it is
+// driver-agnostic.
 class SqlStore {
     conn: Connection
-    repo: Repository
+    repo: Repository<User>
 
+    // The repository is built through a named, annotated binding: the type argument is recorded by
+    // that annotation, and it is what lets the repository resolve `User`'s qualified runtime identity
+    // for the row mapping.
     fn new(conn: Connection): SqlStore {
-        return SqlStore { conn: conn, repo: Repository.new("User", "users", "id") }
+        repo: Repository<User> = Repository.new("users", "id")
+        return SqlStore { conn: conn, repo: repo }
     }
 
     impl Store {
