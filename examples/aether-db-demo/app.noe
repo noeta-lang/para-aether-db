@@ -63,8 +63,17 @@ class SqlStore {
         }
 
         // Stage a write into the request's unit-of-work: decode the JSON into a `User`, enqueue it.
+        //
+        // The decode names `User` as a TYPE, not a string. `json.try_parse::<User>` resolves the type
+        // at compile time — it follows a `namespace`, a `use … as` alias and a rename, and a typo is
+        // an E0013 here rather than a runtime `Err` — and it answers `Result<User, JsonError>`, so the
+        // value handed to `add` is a `User` the checker has verified against `Repository<User>`. The
+        // string form (`json.decode_typed(name, data)`) exists for the case this is not: a name known
+        // only at run time, as a router dispatching over many body types. This store serves one
+        // model, so the type is known here, and the `model` parameter is the interface's — the
+        // framework passes the name it dispatched on; this impl already knows which model it holds.
         fn stage(model: string, data: string): void {
-            match json.decode_typed("User", data) {
+            match json.try_parse::<User>(data) {
                 Ok(u) => self.repo.add(u),
                 Err(e) => panic("400 ${e}"),
             }
