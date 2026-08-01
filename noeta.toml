@@ -1,8 +1,8 @@
 [package]
 name = "para/aether_db"
-version = "0.1.2"
+version = "0.2.0"
 # The minimum noeta this package works with; enforced at resolve time from noeta 0.2.1 on.
-toolchain = ">=0.2"
+toolchain = ">=0.3"
 license = "MIT OR Apache-2.0"
 description = "Database-backed sessions for aether — the stored, revocable upgrade to cookie sessions."
 keywords = ["sessions", "web", "database", "aether"]
@@ -20,6 +20,6 @@ keywords = ["sessions", "web", "database", "aether"]
 # sessions by adding `para/aether-db` to the `para` scope it already lists aether (and para/db) under.
 [dependencies]
 para = [
-    { version = "^0.1", package = "para/aether" },
-    { version = "^0.1", package = "para/db" },
+    { version = "^0.2", package = "para/aether" },
+    { version = "^0.2", package = "para/db" },
 ]

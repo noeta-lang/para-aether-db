@@ -10,13 +10,14 @@
 // `DbSessions` and `CookieSessions` are interchangeable at a `dyn SessionStore` call site: a handler
 // written against one moves to the other without a line changing.
 
-namespace para.aether_db
-
 use para.aether.SessionStore
 use para.db.Connection
 use std.http.{Request, Response}
 use std.http.server
-use std.session
+// Aliased: three methods below take a `session: Session` parameter — the name the
+// `SessionStore` trait gives it — so the bare module name is not available to the two
+// call sites that want the CODEC rather than a value.
+use std.session as sessions
 use std.session.Session
 use std.json
 use std.crypto
@@ -78,7 +79,7 @@ pub class DbSessions {
             return empty_session()
         }
         raw = rows[0]["data"].as<string>() ?? "{}"
-        return session.of(decode_data(raw)).with_id(sid)
+        return sessions.of(decode_data(raw)).with_id(sid)
     }
 
     // UPSERT the session's data under its id (minted on the first write), then set the id cookie.
@@ -122,7 +123,7 @@ pub class DbSessions {
 // valid stored session. Untagged, so its first write mints a new id rather than reusing a stale one.
 fn empty_session(): Session {
     blank: Map<string, string> = {}
-    return session.of(blank)
+    return sessions.of(blank)
 }
 
 // A high-entropy opaque id, minted on a session's first write. NOT a signed payload: the row is the
