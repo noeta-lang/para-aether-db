@@ -5,7 +5,7 @@ Guidance for coding agents working in this repo — the standalone repo of the *
 ## Repo layout
 
 - `noeta.toml` — the package manifest (`name = "para/aether_db"`). Pure Noeta (no `native` key), but it **depends on two sibling packages** — para/aether and para/db — bound under one `para` scope key as an array (multi-package-per-scope resolution). Those deps are currently the pre-publish `git = "file:///home/niklas/Code/para/para-*"` form; they flip to github URLs / registry versions at publish.
-- `sessions.noe` — the whole surface: the `DbSessions` class implementing para/aether's `SessionStore` over a para/db `Connection`.
+- `aether_db.noe` — the whole surface: the `DbSessions` class implementing para/aether's `SessionStore` over a para/db `Connection`.
 - `migrations/` — the one `sessions`-table migration consumers copy or point `conn.migrate` at.
 - `examples/*/` — each a standalone package depending on this repo via `{ path = "../.." }` alongside the sibling git deps.
 - `.github/workflows/` — CI (`ci.yml`) and the tag-triggered registry publish (`release.yml`).

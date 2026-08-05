@@ -64,7 +64,7 @@ use std.http.server
 use std.http.{Request, Response}
 
 class Account {
-    fn new(): Account {
+    pub fn new(): Account {
         return Account {}
     }
 
