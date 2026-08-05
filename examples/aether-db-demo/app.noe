@@ -46,7 +46,7 @@ class SqlStore {
     // The repository is built through a named, annotated binding: the type argument is recorded by
     // that annotation, and it is what lets the repository resolve `User`'s qualified runtime identity
     // for the row mapping.
-    fn new(conn: Connection): SqlStore {
+    pub fn new(conn: Connection): SqlStore {
         repo: Repository<User> = Repository.new("users", "id")
         return SqlStore { conn: conn, repo: repo }
     }
@@ -59,7 +59,7 @@ class SqlStore {
         // `find` answers `?User` — the repository's own type argument — so `u` is a `User` here with
         // nothing to narrow. The `dyn` is the `Store` interface's return type: the framework dispatches
         // over many models and cannot name this one, which is exactly the boundary a `dyn` belongs on.
-        fn load(model: string, id: string): dyn {
+        pub fn load(model: string, id: string): dyn {
             return match self.repo.find(self.conn, id.to_int()) {
                 some(u) => u,
                 none => panic("404 no ${model} ${id}"),
@@ -76,7 +76,7 @@ class SqlStore {
         // only at run time, as a router dispatching over many body types. This store serves one
         // model, so the type is known here, and the `model` parameter is the interface's — the
         // framework passes the name it dispatched on; this impl already knows which model it holds.
-        fn stage(model: string, data: string): void {
+        pub fn stage(model: string, data: string): void {
             match json.try_parse::<User>(data) {
                 Ok(u) => self.repo.add(u),
                 Err(e) => panic("400 ${e}"),
@@ -84,7 +84,7 @@ class SqlStore {
         }
 
         // Commit the request's staged writes as one batch (BEGIN … COMMIT).
-        fn flush(): void {
+        pub fn flush(): void {
             self.repo.flush(self.conn)
         }
     }
@@ -100,19 +100,19 @@ trait Clock {
 
 // A fixed clock — deterministic output makes the injected service observable in the string path.
 class FixedClock {
-    fn new(): FixedClock {
+    pub fn new(): FixedClock {
         return FixedClock {}
     }
 
     impl Clock {
-        fn stamp(): string {
+        pub fn stamp(): string {
             return "2026-07-22T00:00:00Z"
         }
     }
 }
 
 class UsersController {
-    fn new(): UsersController {
+    pub fn new(): UsersController {
         return UsersController {}
     }
 
