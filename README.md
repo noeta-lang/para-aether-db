@@ -33,9 +33,9 @@ So an app reaches for stored sessions by adding `para/aether_db` to the `para` s
 ```toml
 [dependencies]
 para = [
-    { version = "^0.1", package = "para/aether" },
-    { version = "^0.1", package = "para/db" },
-    { version = "^0.1", package = "para/aether_db" },   # <- add this
+    { version = "^0.4", package = "para/aether" },
+    { version = "^0.5", package = "para/db" },
+    { version = "^0.3", package = "para/aether_db" },   # <- add this
 ]
 
 [trust]

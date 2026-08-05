@@ -32,7 +32,7 @@ pub class DbSessions {
     max_age: int
     secure: bool
 
-    fn new(conn: Connection, cookie_name: string, max_age: int, secure: bool): DbSessions {
+    pub fn new(conn: Connection, cookie_name: string, max_age: int, secure: bool): DbSessions {
         return DbSessions { conn: conn, cookie_name: cookie_name, max_age: max_age, secure: secure }
     }
 
@@ -41,7 +41,7 @@ pub class DbSessions {
         // row rehydrates into a CLEAN `Session` tagged with that id (clean, so a pure read never
         // provokes a row write); everything else — no cookie, no row, an expired row — yields an
         // empty session, the one correct answer to "absent", "forged", and "expired" alike.
-        fn open(req: Request): Session {
+        pub fn open(req: Request): Session {
             return match req.cookie(self.cookie_name) {
                 some(sid) => self.load(sid),
                 none => empty_session(),
@@ -53,7 +53,7 @@ pub class DbSessions {
         //   * emptied (a `clear()`) — DELETE the row and expire the cookie: a real, revocable logout.
         //   * otherwise — UPSERT the row (data as JSON, fresh expiry) under its id, minted on the
         //     first write, and set the id cookie.
-        fn attach(resp: Response, session: Session): Response {
+        pub fn attach(resp: Response, session: Session): Response {
             if !session.dirty() {
                 return resp
             }

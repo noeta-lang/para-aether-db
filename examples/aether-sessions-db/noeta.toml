@@ -9,8 +9,8 @@ version = "0.1.0"
 # package's docs are the discoverability story; there is no bespoke compiler diagnostic.
 [dependencies]
 para = [
-    { version = "^0.2", package = "para/aether" },
-    { version = "^0.2", package = "para/db" },
+    { version = "^0.4", package = "para/aether" },
+    { version = "^0.5", package = "para/db" },
     { path = "../.." },
 ]
 

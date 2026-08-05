@@ -34,7 +34,7 @@ use std.http.{Request, Response}
 
 // One controller, three routes, each reading or writing the INJECTED `dyn SessionStore`.
 class Sessions {
-    fn new(): Sessions {
+    pub fn new(): Sessions {
         return Sessions {}
     }
 
