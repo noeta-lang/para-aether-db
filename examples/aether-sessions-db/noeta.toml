@@ -1,5 +1,5 @@
 [package]
-name = "noeta/aether_sessions_db"
+name = "local/aether_sessions_db"
 version = "0.1.0"
 
 # The opt-in to STORED sessions is this one manifest change: alongside para/aether and para/db, the
