@@ -8,7 +8,7 @@ version = "0.1.0"
 [dependencies]
 para = [
     { version = "^0.4", package = "para/aether" },
-    { version = "^0.6", package = "para/db" },
+    { version = "^0.7", package = "para/db" },
 ]
 
 # `para/db` ships a native Rust extension (the SQLite driver); the root app must authorize it.

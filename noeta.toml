@@ -1,8 +1,8 @@
 [package]
 name = "para/aether_db"
-version = "0.5.0"
+version = "0.6.0"
 # The minimum noeta this package works with; enforced at resolve time from noeta 0.2.1 on.
-toolchain = ">=0.7"
+toolchain = ">=0.8"
 license = "MIT OR Apache-2.0"
 description = "Database-backed sessions for aether — the stored, revocable upgrade to cookie sessions."
 keywords = ["sessions", "web", "database", "aether"]
@@ -21,5 +21,5 @@ keywords = ["sessions", "web", "database", "aether"]
 [dependencies]
 para = [
     { version = "^0.4", package = "para/aether" },
-    { version = "^0.6", package = "para/db" },
+    { version = "^0.7", package = "para/db" },
 ]
